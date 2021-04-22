@@ -2,16 +2,13 @@ const Discord = require("discord.js"),
     superagent = require("superagent"),
     fs = require("fs"),
     modules = [
-        "apis",
-        "economy",
-        "images",
-        "info",
-        "misc",
-        "moderation",
-        "music",
-        "owner",
-        "roleplay",
-        "utility"
+            "config",
+    "economy",
+    "fun",
+    "info",
+    "mc",
+    "moderation",
+    "owner"
     ];
 
 function permlevel(input) {

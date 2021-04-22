@@ -16,6 +16,11 @@ let actions = [
     "obtained ",
 ]
 
+let actionas = [
+    "stupid ",
+    "dumb ",
+]
+
 let gunk = [
     "Lapis Lazuli",
     "dirt",
@@ -62,7 +67,7 @@ exports.run = async (client, message, args, tools) => {
     else {
         let embed = new Discord.MessageEmbed()
         .setColor("#00FF80")
-        .setDescription("You " + randomthing(actions) + randint(1, 6).toString() + " " + randomthing(gunk) + ".")
+        .setDescription("You " + randomthing(actions) + randint(1, 6).toString() + " " + randomthing(actionas) + randomthing(gunk) + ".")
     await message.channel.send(embed)
     }
 };

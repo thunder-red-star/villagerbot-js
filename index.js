@@ -6,6 +6,8 @@ const Discord = require("discord.js"),
     chalk = require('chalk');
 var express = require('express');
 const Emeralds = require('./models/emeralds.js')
+const Database = require('./Database/database');
+client.database = new Database('../Database', 'database');
 
 modules = [
     "config",
@@ -13,8 +15,8 @@ modules = [
     "fun",
     "info",
     "mc",
-    "owner",
-    "useful"
+    "moderation",
+    "owner"
 ],
     fs = require("fs");
 
