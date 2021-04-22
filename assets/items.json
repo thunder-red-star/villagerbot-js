@@ -1,0 +1,49 @@
+{
+    "special": {
+        "test item": {
+            "id": "test item",
+            "worth": 69,
+            "sticky": 1
+        },
+        "test item 2": {
+            "id": "test item 2",
+            "worth": 69,
+            "sticky": 1
+        }
+    },
+    "buyable": {
+        "buyable test item": {
+            "id": "buyable test item",
+            "worth": 1,
+            "cost": 2,
+            "sticky": 0
+        },
+        "buyable test item 2": {
+            "id": "buyable test item 2",
+            "worth": 1,
+            "cost": 2,
+            "sticky": 0
+        }
+    },
+    "fish": {
+        "test fish": {
+            "id": "test fish",
+            "worth": 69,
+            "sticky": 0
+        }
+    },
+    "books": {
+        "testing ii": {
+            "id": "testing ii",
+            "worth": 69,
+            "sticky": 0
+        }
+    },
+    "potions": {
+        "haste i": {
+            "id": "haste i",
+            "worth": 69,
+            "sticky": 0
+        }
+    }
+}
