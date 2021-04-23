@@ -6,8 +6,8 @@
         "cost": 0,
         "sticky": 1
     },
-    "annoying_petus_followers": {
-        "name": "Annoying Petus Followers",
+    "annoying_petus_follower": {
+        "name": "Annoying Petus Follower",
         "worth": 0.0000001,
         "buyable": 0,
         "cost": 0,
