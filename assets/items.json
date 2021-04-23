@@ -1,49 +1,128 @@
 {
-    "special": {
-        "test item": {
-            "id": "test item",
-            "worth": 69,
-            "sticky": 1
-        },
-        "test item 2": {
-            "id": "test item 2",
-            "worth": 69,
-            "sticky": 1
-        }
+    "steaming_pile_of_shit": {
+        "name": "Steaming pile of Iapetus11's shit",
+        "worth": -1,
+        "buyable": 0,
+        "cost": 0,
+        "sticky": 1
     },
-    "buyable": {
-        "buyable test item": {
-            "id": "buyable test item",
-            "worth": 1,
-            "cost": 2,
-            "sticky": 0
-        },
-        "buyable test item 2": {
-            "id": "buyable test item 2",
-            "worth": 1,
-            "cost": 2,
-            "sticky": 0
-        }
+    "annoying_petus_followers": {
+        "name": "Annoying Petus Followers",
+        "worth": 0.0000001,
+        "buyable": 0,
+        "cost": 0,
+        "sticky": 1
     },
-    "fish": {
-        "test fish": {
-            "id": "test fish",
-            "worth": 69,
-            "sticky": 0
-        }
+    "test_item": {
+        "name": "Test Item",
+        "worth": 69,
+        "buyable": 0,
+        "cost": 0,
+        "sticky": 0
     },
-    "books": {
-        "testing ii": {
-            "id": "testing ii",
-            "worth": 69,
-            "sticky": 0
-        }
+    "test_item_2": {
+        "name": "Test Item 2",
+        "worth": 69,
+        "buyable": 0,
+        "cost": 0,
+        "sticky": 0
     },
-    "potions": {
-        "haste i": {
-            "id": "haste i",
-            "worth": 69,
-            "sticky": 0
-        }
+    "test_item_3": {
+        "name": "Test Item 3",
+        "worth": 420,
+        "buyable": 0,
+        "cost": 0,
+        "sticky": 0
+    },
+    "looting_1": {
+        "name": "Looting I",
+        "worth": 32,
+        "buyable": 1,
+        "cost": 128,
+        "sticky": 0
+    },
+    "looting_2": {
+        "name": "Looting II",
+        "worth": 256,
+        "buyable": 1,
+        "cost": 1024,
+        "sticky": 0
+    },
+    "looting_3": {
+        "name": "Looting III",
+        "worth": 768,
+        "buyable": 0,
+        "cost": 1024,
+        "sticky": 0
+    },
+    "efficiency_i": {
+        "name": "Efficiency I",
+        "worth": 16,
+        "buyable": 1,
+        "cost": 64,
+        "sticky": 0
+    },
+    "efficiency_ii": {
+        "name": "Efficiency II",
+        "worth": 32,
+        "buyable": 1,
+        "cost": 128,
+        "sticky": 0
+    },
+    "efficiency_iii": {
+        "name": "Efficiency III",
+        "worth": 128,
+        "buyable": 0,
+        "cost": 1024,
+        "sticky": 0
+    },
+    "efficiency_iv": {
+        "name": "Efficiency IV",
+        "worth": 512,
+        "buyable": 0,
+        "cost": 1024,
+        "sticky": 0
+    },
+    "efficiency_v": {
+        "name": "Efficiency V",
+        "worth": 1024,
+        "buyable": 0,
+        "cost": 1024,
+        "sticky": 0
+    },
+    "fortune_i": {
+        "name": "Fortune I",
+        "worth": 32,
+        "buyable": 1,
+        "cost": 128,
+        "sticky": 0
+    },
+    "fortune_ii": {
+        "name": "Fortune II",
+        "worth": 256,
+        "buyable": 1,
+        "cost": 1024,
+        "sticky": 0
+    },
+    "fortune_iii": {
+        "name": "Fortune III",
+        "worth": 768,
+        "buyable": 0,
+        "cost": 1024,
+        "sticky": 0
+    },
+    "lure_i": {
+        "name": "Lure I",
+        "worth": 768,
+        "buyable": 0,
+        "cost": 1024,
+        "sticky": 0
+    },
+    "lure_ii": {
+        "name": "Lure II",
+        "worth": 768,
+        "buyable": 0,
+        "cost": 1024,
+        "sticky": 0
     }
 }

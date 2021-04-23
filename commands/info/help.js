@@ -83,7 +83,7 @@ exports.run = async (client, message, args, tools) => {
                         cmd.help.description
                         }\nUsage: \`${cmd.help.usage}\`\nPermission Level: ${cmd.conf.permLevel} (${permlevel(
                             cmd.conf.permLevel
-                        )})\n\nPro tip: You can vote for the bot using \`c!vote\` and you can get coins for it!`
+                        )})`
                     )
                     .setFooter("CommandStorm")
                     .setTimestamp();

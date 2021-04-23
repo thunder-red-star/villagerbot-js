@@ -8,6 +8,7 @@ emeraldsSchema = mongoose.Schema({
     lastclaim: Long, 
     streak: Number,
     vault: Number, 
-    capacity: Number
+    capacity: Number,
+    pickaxe: Number
 });
 module.exports = mongoose.model("Emeralds",emeraldsSchema)

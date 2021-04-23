@@ -38,7 +38,7 @@ module.exports = async message => {
     if (!guildSettings) {
         let prefix = settings.prefix;
         if (!message.content.startsWith(prefix)) return;
-        let command = message.content.split(' ')[0].slice(prefix.length),
+        let command = message.content.split(' ')[0].slice(prefix.length).toLowerCase(),
             params = message.content.split(' ').slice(1),
             perms = client.elevation(message),
             cmd;

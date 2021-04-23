@@ -9,6 +9,7 @@ const Emeralds = require('./models/emeralds.js')
 const Database = require('./Database/database');
 client.database = new Database('../Database', 'database');
 
+console.log(client.database.get("inventories.691009964570968144.test_item_3"))
 modules = [
     "config",
     "economy",

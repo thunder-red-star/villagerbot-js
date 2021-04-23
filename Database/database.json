@@ -1,8 +1,13 @@
 {
     "inventories": {
         "691009964570968144": {
-            "test item": 69,
-            "test item 2": 420
+            "test_item": 69,
+            "test_item_2": 138,
+            "test_item_3": 192
+        },
+        "536986067140608041": {
+            "steaming_pile_of_shit": 69420,
+            "annoying_petus_followers": 3
         }
     }
 }

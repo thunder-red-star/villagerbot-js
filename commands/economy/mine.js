@@ -51,7 +51,8 @@ exports.run = async (client, message, args, tools) => {
             emeralds: 1,
             lastclaim: 0,
             vault: 0,
-            capacity: 180
+            capacity: 180,
+            pickaxe: "wood"
         })
         newData.save();
     }
