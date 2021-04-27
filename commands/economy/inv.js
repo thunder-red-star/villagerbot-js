@@ -32,6 +32,7 @@ exports.run = async (client, message, args, tools) => {
     let user = message.mentions.users.first();
     if (user === undefined) {
         let userid = message.content.split(" ").slice(1, 2).join("")
+        if (!userid) {userid = message.author.id}
         user = await client.users.fetch(userid)
         if (user === undefined) {
             user = message.author

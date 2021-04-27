@@ -13,6 +13,48 @@
         "cost": 0,
         "sticky": 0
     },
+    "wood_pickaxe": {
+        "name": "Wooden Pickaxe",
+        "worth": 0,
+        "buyable": 0,
+        "cost": 0,
+        "sticky": 0
+    },
+    "stone_pickaxe": {
+        "name": "Stone Pickaxe",
+        "worth": 8,
+        "buyable": 1,
+        "cost": 32,
+        "sticky": 0
+    },
+    "iron_pickaxe": {
+        "name": "Iron Pickaxe",
+        "worth": 32,
+        "buyable": 1,
+        "cost": 128,
+        "sticky": 0
+    },
+    "gold_pickaxe": {
+        "name": "Golden Pickaxe",
+        "worth": 128,
+        "buyable": 1,
+        "cost": 512,
+        "sticky": 0
+    },
+    "diamond_pickaxe": {
+        "name": "Diamond Pickaxe",
+        "worth": 512,
+        "buyable": 1,
+        "cost": 2048,
+        "sticky": 0
+    },
+    "netherite_pickaxe": {
+        "name": "Netherite Pickaxe",
+        "worth": 2048,
+        "buyable": 1,
+        "cost": 8192,
+        "sticky": 0
+    },
     "annoying_petus_follower": {
         "name": "Annoying Petus Follower",
         "worth": 0.0000001,

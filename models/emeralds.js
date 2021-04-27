@@ -9,6 +9,6 @@ emeraldsSchema = mongoose.Schema({
     streak: Number,
     vault: Number, 
     capacity: Number,
-    pickaxe: Number
+    pickaxe: String
 });
 module.exports = mongoose.model("Emeralds",emeraldsSchema)

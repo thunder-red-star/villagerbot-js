@@ -5,8 +5,29 @@ function randomthing(array) {
     return array[Math.floor(Math.random() * array.length)]
 }
 
-function randint (min, max) {
+function randint(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function gets_emerald(pickaxe) {
+    if (pickaxe == "wood"){
+        return (randint(1, 5) == 1)
+    }
+    if (pickaxe == "stone"){
+        return (rand(1, 4) == 1)
+    }
+    if (pickaxe == "iron"){
+        return (randint(1, 7) <= 2)
+    }
+    if (pickaxe == "gold"){
+        return (randint(1, 3) == 1)
+    }
+    if (pickaxe == "diamond"){
+        return (randint(1, 2) == 2)
+    }
+    if (pickaxe == "netherite"){
+        return (randint(1, 6) <= 4)
+    }
 }
 
 let actions = [
@@ -35,41 +56,49 @@ let gunk = [
     "planks",
 ]
 exports.run = async (client, message, args, tools) => {
-    if (randint(1, 5) == 1) {
-    let embed = new Discord.MessageEmbed()
-        .setColor("#00FF80")
-        .setDescription("You " + randomthing(actions) + "1 emerald <:emerald:834856709011931147>.")
-    await message.channel.send(embed)
     const data = await Emeralds.findOne({
         userID: message.author.id
     });
+    let pickaxe
     if (!data) {
-        message.channel.send('Hold on, creating records for you since it\'s your first time using this bot')
-        let newData = new Emeralds({
-            _id: mongoose.Types.ObjectId(),
-            userID: message.author.id,
-            emeralds: 1,
-            lastclaim: 0,
-            vault: 0,
-            capacity: 180,
-            pickaxe: "wood"
-        })
-        newData.save();
+        pickaxe = "wood"
     }
-    else {
-        var myquery = { userID: message.author.id };
-        let newEmeralds = data.emeralds + 1
-        var newvalues = { $set: { emeralds: newEmeralds } };
-        Emeralds.updateOne(myquery, newvalues, function(err, res) {
-            if (err) throw err;
+    pickaxe = data.pickaxe
+    if (gets_emerald(pickaxe)) {
+        let embed = new Discord.MessageEmbed()
+            .setColor("#00FF80")
+            .setDescription("You " + randomthing(actions) + "1 emerald <:emerald:834856709011931147>.")
+        await message.channel.send(embed)
+        const data = await Emeralds.findOne({
+            userID: message.author.id
         });
-    }
+        if (!data) {
+            message.channel.send('Hold on, creating records for you since it\'s your first time using this bot')
+            let newData = new Emeralds({
+                _id: mongoose.Types.ObjectId(),
+                userID: message.author.id,
+                emeralds: 1,
+                lastclaim: 0,
+                vault: 0,
+                capacity: 180,
+                pickaxe: "wood"
+            })
+            newData.save();
+        }
+        else {
+            var myquery = { userID: message.author.id };
+            let newEmeralds = data.emeralds + 1
+            var newvalues = { $set: { emeralds: newEmeralds } };
+            Emeralds.updateOne(myquery, newvalues, function(err, res) {
+                if (err) throw err;
+            });
+        }
     }
     else {
         let embed = new Discord.MessageEmbed()
-        .setColor("#00FF80")
-        .setDescription("You " + randomthing(actions) + randint(1, 6).toString() + " " + randomthing(actionas) + randomthing(gunk) + ".")
-    await message.channel.send(embed)
+            .setColor("#00FF80")
+            .setDescription("You " + randomthing(actions) + randint(1, 6).toString() + " " + randomthing(actionas) + randomthing(gunk) + ".")
+        await message.channel.send(embed)
     }
 };
 
