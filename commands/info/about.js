@@ -10,7 +10,7 @@ exports.run = async (client, message, args, tools) => {
         .addField("More authentic experience 📕", "This bot will give you a more authentic experience with Minecraft! Efficiency I is not the highest, Efficiency V is!", true)
         .addField("Less toxic developer 🙋‍♂️", "Your bot developer is less toxic. He won't mute you for any reason.", true)
         .addField("Same quality programming language 👨‍💻", "There are less features than the original (coming soon). This bot is also written with a worse, less quality framework.", true)
-        .setFooter("Made by ThunderRedStar#9374")
+        .setFooter("Made by ThunderRedStar#9374, ideas by Iapetus11#6821")
         .setTimestamp()
     await message.channel.send(embed)
 };
