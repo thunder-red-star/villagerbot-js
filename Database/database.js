@@ -27,15 +27,12 @@ class Database {
     async addItem(user, value, amount, path) {
         amount = parseInt(amount)
         value = value.replace(" ","")
-        console.log("inventories."+user)
-        console.log(this.get("inventories."+user))
         if (this.get("inventories." + user) == undefined) {
             let newPath = "inventories."+user
             this.addUser(user, value, amount)
             return this.newKey(user, value, amount)
             console.log("Added user with id " + user)
         }
-        console.log(this.get("inventories." + user))
         if (db.inventories[user].hasOwnProperty(value)) {
                 return this.set(path, amount + check_count(value, user))
         } else {

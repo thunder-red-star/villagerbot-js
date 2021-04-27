@@ -15,9 +15,11 @@ exports.run = async (client, message) => {
   hours = (hours < 10) ? "0" + hours : hours;
   minutes = (minutes < 10) ? "0" + minutes : minutes;
   seconds = (seconds < 10) ? "0" + seconds : seconds;
+  let commandcollection = client.commands
+      let totcmds = commandcollection.array().length
   fs.readdir('./commands/', async (err, files) => {
     if (err) console.error(err);
-    totcmds = files.length;
+    totalcmds = files.length;
   
     const prefixs = require("../../models/settings.js")
     prefixs.findOne({
@@ -29,7 +31,7 @@ exports.run = async (client, message) => {
       let globalprefix = settings.prefix;
       osutils.cpuUsage(function(v) {
         const embed = new Discord.MessageEmbed()
-        .setColor(0x7289DA)
+        .setColor("#00FF80")
         .setThumbnail(client.user.avatarURL({ format: 'png', dynamic: true, size: 2048 }))
         .setURL(client.user.avatarURL({ format: 'png', dynamic: true, size: 2048 }))
         .setTimestamp()
@@ -41,7 +43,7 @@ exports.run = async (client, message) => {
         .addField("Total Users", `${client.users.cache.size}`, true)
         .addField("Bot Version", version["version"], true)
         .addField("Library", "Discord.js v12", true)
-        .addField("Developer", `${customisation.ownername}`, true)
+        .addField("Developer", `ThunderRedStar#9374`, true)
         .addField("Platform", osutils.platform(),true)
         .addField("VPS CPU Cores", osutils.cpuCount() + " Cores",true)
         .addField("CPU Usage", `${(v * 100).toString().split(".")[0] + "." + (v * 100).toString().split(".")[1].split('')[0] + (v * 100).toString().split(".")[1].split('')[1]}%`,true)
