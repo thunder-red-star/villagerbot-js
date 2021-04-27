@@ -120,7 +120,6 @@ function _setKey(user, value, amount, obj = undefined) {
     let ref = obj;
     ref.inventories[user][value] = amount;
     output = ref;
-    console.log(output)
     return output;
 }
 function _setUser(user, value, amount, obj = undefined) {
@@ -129,7 +128,6 @@ function _setUser(user, value, amount, obj = undefined) {
     let ref = obj;
     ref.inventories[user] = {};
     output = ref;
-    console.log(output)
     return output;
 }
 

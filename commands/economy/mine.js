@@ -30,6 +30,26 @@ function gets_emerald(pickaxe) {
     }
 }
 
+function how_many(userid, client) {
+    let inv = client.database.get("inventories." + userid)
+    if (inv["fortune_iii"] > 0) {
+        return randint(1, 4)
+    }
+    else {
+        if (inv["fortune_ii"] > 0) {
+            return randint(1, 3)
+        }
+        else {
+            if (inv["fortune_i"] > 0) {
+                return randint(1, 2)
+            }
+            else {
+                return 1
+            }
+        }
+    }
+}
+
 let actions = [
     "dug up ",
     "mined up ",
@@ -75,9 +95,10 @@ exports.run = async (client, message, args, tools) => {
     let pickaxe
     pickaxe = data.pickaxe || wood
     if (gets_emerald(pickaxe)) {
+        let moreems = how_many(message.author.id, client)
         let embed = new Discord.MessageEmbed()
             .setColor("#00FF80")
-            .setDescription("You " + randomthing(actions) + "1 emerald <:emerald:834856709011931147>.")
+            .setDescription("You " + randomthing(actions) + moreems + " emeralds <:emerald:834856709011931147>.")
         await message.channel.send(embed)
         const data = await Emeralds.findOne({
             userID: message.author.id
@@ -87,7 +108,7 @@ exports.run = async (client, message, args, tools) => {
             let newData = new Emeralds({
                 _id: mongoose.Types.ObjectId(),
                 userID: message.author.id,
-                emeralds: 1,
+                emeralds: moreems,
                 lastclaim: 0,
                 vault: 0,
                 capacity: 180,
@@ -97,7 +118,7 @@ exports.run = async (client, message, args, tools) => {
         }
         else {
             var myquery = { userID: message.author.id };
-            let newEmeralds = data.emeralds + 1
+            let newEmeralds = data.emeralds + moreems
             var newvalues = { $set: { emeralds: newEmeralds } };
             Emeralds.updateOne(myquery, newvalues, function(err, res) {
                 if (err) throw err;
