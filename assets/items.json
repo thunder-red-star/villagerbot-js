@@ -83,21 +83,21 @@
         "cost": 0,
         "sticky": 0
     },
-    "looting_1": {
+    "looting_i": {
         "name": "Looting I",
         "worth": 32,
         "buyable": 1,
         "cost": 128,
         "sticky": 0
     },
-    "looting_2": {
+    "looting_ii": {
         "name": "Looting II",
         "worth": 256,
         "buyable": 1,
         "cost": 1024,
         "sticky": 0
     },
-    "looting_3": {
+    "looting_iii": {
         "name": "Looting III",
         "worth": 768,
         "buyable": 0,

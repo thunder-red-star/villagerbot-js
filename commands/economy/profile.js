@@ -34,25 +34,26 @@ exports.run = async (client, message, args, tools) => {
         let embed = new Discord.MessageEmbed()
             .setAuthor(user.username + "'s profile'")
             .setColor("#00FF80")
-            .addField("Health", repeat("<:hf:836685182516985927>", 10) + "\n(Coming soon!)")
+            .addField("Health", "<:hf:836685182516985927>".repeat(10) + "\n(Coming soon!)")
             .addField("Net Worth", "0<:emerald:834856709011931147>")
             .addField("Pickaxe", "Wooden Pickaxe", true)
-            .addField("Total Item Count", "0 (0 unique items)", true)
+            .addField("Total Item Count", "0 items\n0 unique items", true)
         message.channel.send(embed)
 
 
     }
     else {
         let totalinv = 0
-        let inv = client.database.get(`inventories.${user.id}`)
-        if (inv == undefined) { console.log("haha") }
         let uitemcount = 0
         let itemcount = 0
-        Object.keys(inv).forEach(async (k) => {
-            totalinv += inv[k] * getworth(k)
-            itemcount += inv[k]
-            uitemcount++
-        });
+        let inv = client.database.get(`inventories.${user.id}`)
+        if (inv != undefined) {
+            Object.keys(inv).forEach(async (k) => {
+                totalinv += inv[k] * getworth(k)
+                itemcount += inv[k]
+                uitemcount++
+            });
+        }
         let net = eval((data.emeralds + data.vault + totalinv).toString())
         let embed = new Discord.MessageEmbed()
             .setAuthor(user.username + "'s profile")

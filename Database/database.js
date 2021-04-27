@@ -1,5 +1,6 @@
 const fs = require("fs");
 const db = require("./database.json")
+
 function check_count(item, user) {
     return db.inventories[user][item]
 }
@@ -30,7 +31,8 @@ class Database {
         console.log(this.get("inventories."+user))
         if (this.get("inventories." + user) == undefined) {
             let newPath = "inventories."+user
-            return this.addUser(user, value, amount)
+            this.addUser(user, value, amount)
+            return this.newKey(user, value, amount)
             console.log("Added user with id " + user)
         }
         console.log(this.get("inventories." + user))
@@ -129,8 +131,6 @@ function _setUser(user, value, amount, obj = undefined) {
     output = obj;
     let ref = obj;
     ref.inventories[user] = {};
-    delete ref.inventories[user][""]
-    ref.inventories[user][value] = amount;
     output = ref;
     console.log(output)
     return output;

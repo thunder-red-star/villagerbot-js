@@ -10,22 +10,22 @@ function randint(min, max) {
 }
 
 function gets_emerald(pickaxe) {
-    if (pickaxe == "wood"){
+    if (pickaxe == "wood") {
         return (randint(1, 5) == 1)
     }
-    if (pickaxe == "stone"){
+    if (pickaxe == "stone") {
         return (rand(1, 4) == 1)
     }
-    if (pickaxe == "iron"){
+    if (pickaxe == "iron") {
         return (randint(1, 7) <= 2)
     }
-    if (pickaxe == "gold"){
+    if (pickaxe == "gold") {
         return (randint(1, 3) == 1)
     }
-    if (pickaxe == "diamond"){
+    if (pickaxe == "diamond") {
         return (randint(1, 2) == 2)
     }
-    if (pickaxe == "netherite"){
+    if (pickaxe == "netherite") {
         return (randint(1, 6) <= 4)
     }
 }
@@ -59,11 +59,21 @@ exports.run = async (client, message, args, tools) => {
     const data = await Emeralds.findOne({
         userID: message.author.id
     });
-    let pickaxe
     if (!data) {
-        pickaxe = "wood"
+        message.channel.send('Hold on, creating records for you since it\'s your first time using this bot')
+        let newData = new Emeralds({
+            _id: mongoose.Types.ObjectId(),
+            userID: message.author.id,
+            emeralds: 1,
+            lastclaim: 0,
+            vault: 0,
+            capacity: 180,
+            pickaxe: "wood"
+        })
+        newData.save();
     }
-    pickaxe = data.pickaxe
+    let pickaxe
+    pickaxe = data.pickaxe || wood
     if (gets_emerald(pickaxe)) {
         let embed = new Discord.MessageEmbed()
             .setColor("#00FF80")
