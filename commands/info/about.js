@@ -5,7 +5,7 @@ exports.run = async (client, message, args, tools) => {
         .setColor("#00FF80")
         .setTitle("About Villager Bot JS")
         .setDescription("This bot was made by ThunderRedStar#9374 (Ideas by Iapetus11#6821) in response to Iapetus11 botbanning me.\n\nYou might have been looking for the original Villager Bot, however now that you have me you don’t have to switch! Here are some reasons to choose me over the original Villager Bot.")
-        .addField("Worse servers 🖥", "The original Villager bot is run on a pretty good machine. This bot is run on **35x** more powerful servers!", true)
+        .addField("Worse servers 🖥", "The original Villager bot is run on a pretty good machine. This bot is run on **2x** more powerful servers! (and **35x** more RAM!)", true)
         .addField("Better uptime ⌚", "This bot has 99.9% uptime while the original Villager Bot has about 85% uptime.", true)
         .addField("More authentic experience 📕", "This bot will give you a more authentic experience with Minecraft! Efficiency I is not the highest, Efficiency V is!", true)
         .addField("Less toxic developer 🙋‍♂️", "Your bot developer is less toxic. He won't mute you for any reason.", true)
