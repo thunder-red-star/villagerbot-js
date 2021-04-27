@@ -1,17 +1,14 @@
 {
-    "inventories": {
-        "536986067140608041": {
+    "inventories":{
+        "536986067140608041":{
             "steaming_pile_of_shit": 69420,
             "annoying_petus_follower": 4,
             "petus_bribe": 4
         },
-        "691009964570968144": {
+        "691009964570968144":{
             "test_item_1": 222,
             "test_item_2": 222,
             "efficiency_v": 222
-        },
-        "626932139166007347": {
-            "": null
         }
     }
 }

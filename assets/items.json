@@ -6,6 +6,13 @@
         "cost": 0,
         "sticky": 1
     },
+    "petus_bribe": {
+        "name": "Iapetus11's bribes",
+        "worth": 100,
+        "buyable": 0,
+        "cost": 0,
+        "sticky": 0
+    },
     "annoying_petus_follower": {
         "name": "Annoying Petus Follower",
         "worth": 0.0000001,

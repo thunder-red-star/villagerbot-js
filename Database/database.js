@@ -26,9 +26,11 @@ class Database {
     async addItem(user, value, amount, path) {
         amount = parseInt(amount)
         value = value.replace(" ","")
+        console.log("inventories."+user)
+        console.log(this.get("inventories."+user))
         if (this.get("inventories." + user) == undefined) {
-            this.addUser(user)
-            this.addItem(user, value, amount)
+            let newPath = "inventories."+user
+            return this.addUser(user, value, amount)
             console.log("Added user with id " + user)
         }
         console.log(this.get("inventories." + user))
@@ -57,7 +59,7 @@ class Database {
         return data;
         console.log(data)
     }
-    addUser(user) {
+    addUser(user, value, amount) {
         Object.keys(this.get("inventories")).forEach(function(k) {
             if (k == user) {
                 return console.log("found user")
@@ -65,7 +67,7 @@ class Database {
         });
         let data = this.read();
         if (!data) data = {};
-        data = _setUser(user);
+        data = _setUser(user, value, amount,data);
         let x = fs.openSync(`${__dirname}/database.json`, 'w')
         fs.truncateSync(this.FilePath);
         fs.writeFileSync(this.FilePath, JSON.stringify(data, null, 4), { encoding: "utf-8" });
@@ -122,12 +124,13 @@ function _setKey(user, value, amount, obj = undefined) {
     console.log(output)
     return output;
 }
-function _setUser(user, obj = undefined) {
+function _setUser(user, value, amount, obj = undefined) {
     if (obj == undefined) return undefined;
     output = obj;
-    let ref = output;
-    console.log(ref.inventories)
+    let ref = obj;
     ref.inventories[user] = {};
+    delete ref.inventories[user][""]
+    ref.inventories[user][value] = amount;
     output = ref;
     console.log(output)
     return output;
