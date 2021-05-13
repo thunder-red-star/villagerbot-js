@@ -162,14 +162,35 @@
     },
     "lure_i": {
         "name": "Lure I",
+        "worth": 64,
+        "buyable": 1,
+        "cost": 256,
+        "sticky": 0
+    },
+    "lure_ii": {
+        "name": "Lure II",
+        "worth": 256,
+        "buyable": 0,
+        "cost": 1024,
+        "sticky": 0
+    },
+    "lure_iii": {
+        "name": "Lure III",
         "worth": 768,
         "buyable": 0,
         "cost": 1024,
         "sticky": 0
     },
-    "lure_ii": {
-        "name": "Lure II",
-        "worth": 768,
+    "cod": {
+        "name": "Cod",
+        "worth": 8,
+        "buyable": 0,
+        "cost": 1024,
+        "sticky": 0
+    },
+    "salmon": {
+        "name": "Salmon",
+        "worth": 12,
         "buyable": 0,
         "cost": 1024,
         "sticky": 0

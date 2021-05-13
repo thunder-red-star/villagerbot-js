@@ -1,14 +1,27 @@
 {
-    "inventories":{
-        "536986067140608041":{
+    "inventories": {
+        "536986067140608041": {
             "steaming_pile_of_shit": 69420,
             "annoying_petus_follower": 4,
             "petus_bribe": 4
         },
-        "691009964570968144":{
-            "test_item_1": 222,
+        "691009964570968144": {
+            "test_item": 222,
             "test_item_2": 222,
-            "efficiency_v": 222
+            "efficiency_v": 69420,
+            "efficiency_iv": 69,
+            "looting_i": 1,
+            "fortune_iii": 100000,
+            "netherite_pickaxe": 1
+        },
+        "666369971307282461": {
+            "test_item": 1
+        },
+        "698218089010954481": {
+            "test_item": 1,
+            "fortune_i": 1,
+            "looting_i": 1,
+            "diamond_pickaxe": 1
         }
     }
 }
