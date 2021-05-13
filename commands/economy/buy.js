@@ -75,8 +75,8 @@ exports.run = async (client, message, args, tools) => {
 
         }
     }
-    if (getcost(item) > data.emeralds) {
-        return message.channel.send("You don't have enough emeralds to buy " + getname(item) + " for " + getcost(item) + "<:emerald:834856709011931147> (You have " + data.emeralds + "<:emerald:834856709011931147>)")
+    if (getcost(item) * quantity > data.emeralds) {
+        return message.channel.send("You don't have enough emeralds to buy " + quantity + " of " + getname(item) + " for " + getcost(item) + "<:emerald:834856709011931147> (You have " + data.emeralds + "<:emerald:834856709011931147>)")
     }
     client.database.addItem(message.author.id, item, quantity, `inventories.${message.author.id}.${item}`)
     var myquery = { userID: message.author.id };

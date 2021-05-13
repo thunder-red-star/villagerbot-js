@@ -195,4 +195,25 @@
         "cost": 1024,
         "sticky": 0
     }
+    "tropical_fish": {
+        "name": "Tropical Fish",
+        "worth": 18,
+        "buyable": 0,
+        "cost": 1024,
+        "sticky": 0
+    }
+    "emerald_fish": {
+        "name": "Salmon",
+        "worth": 256,
+        "buyable": 0,
+        "cost": 1024,
+        "sticky": 0
+    }
+    "goldfish": {
+        "name": "Salmon",
+        "worth": 64,
+        "buyable": 0,
+        "cost": 1024,
+        "sticky": 0
+    }
 }

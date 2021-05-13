@@ -11,6 +11,7 @@ function object_length(object) {
     }
     return count
 }
+
 function randomthing(array) {
     return array[Math.floor(Math.random() * array.length)]
 }
