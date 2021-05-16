@@ -1,6 +1,7 @@
 const Discord = require("discord.js")
 const Emeralds = require('../../models/emeralds.js')
 const mongoose = require('mongoose')
+
 function randomthing(array) {
     return array[Math.floor(Math.random() * array.length)]
 }
@@ -9,120 +10,103 @@ function randint(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
+
 function how_fast(userid, client) {
     let inv = client.database.get("inventories." + userid)
     if (inv["lure_iii"] > 0) {
-        return randint(1,7)
+        return randint(1, 7) * 1000
     }
     else {
         if (inv["lure_ii"] > 0) {
-            return randint(2, 10)
+            return randint(2, 10) * 1000
         }
         else {
             if (inv["lure_i"] > 0) {
-                return randint(3, 12)
+                return randint(3, 12) * 1000
             }
             else {
-                return randint(4, 15)
+                return randint(4, 15) * 1000
             }
         }
     }
 }
 
 let actions = [
-    "dug up ",
-    "mined up ",
+    "fished up ",
+    "reeled up ",
     "found ",
     "obtained ",
 ]
 
+let firstthing = [
+    "You go fishing...",
+    "You cast out your fishing rod...",
+    "You cast out your fishing line..."
+]
+
 let actionas = [
     "stupid ",
-    "dumb ",
+    "dumb "
 ]
 
 let gunk = [
-    "Lapis Lazuli",
-    "dirt",
-    "iron ore",
-    "stone",
-    "cobblestone",
-    "andesite",
-    "diorite",
-    "granite",
-    "diamond ore",
-    "coarse dirt",
-    "planks",
+    "pair of leather boots",
+    "dirt block",
+    "bone",
+    "piece of rotten flesh",
+    "gravel",
+    "lily pad"
 ]
+
 exports.run = async (client, message, args, tools) => {
-    const data = await Emeralds.findOne({
-        userID: message.author.id
-    });
-    if (!data) {
-        message.channel.send('Hold on, creating records for you since it\'s your first time using this bot')
-        let newData = new Emeralds({
-            _id: mongoose.Types.ObjectId(),
-            userID: message.author.id,
-            emeralds: 1,
-            lastclaim: 0,
-            vault: 0,
-            capacity: 180,
-            pickaxe: "wood"
-        })
-        newData.save();
+    let msg = message
+    let inv = client.database.get("inventories." + message.author.id)
+    if (!inv["fishing_rod"] || inv["fishing_rod"] == 0) {
+        return message.channel.send("Dude, you don't have a fishing rod! Go buy one!")
     }
-    let pickaxe
-    pickaxe = data.pickaxe || wood
-    if (gets_emerald(pickaxe)) {
-        let moreems = how_many(message.author.id, client)
+    let embed = new Discord.MessageEmbed()
+        .setDescription(randomthing(firstthing))
+        .setColor("#00FF80")
+
+    let messagesent = await message.channel.send(embed)
+    await sleep(how_fast(msg.author.id, client))
+    messagesent.react("🎣")
+    message.channel.send("Quick! React with 🎣 within 5 seconds to catch the fish!")
+    const filter = (reaction, user) => {
+        return ['🎣'].includes(reaction.emoji.name) && user.id === message.author.id;
+    };
+    collector = new Discord.ReactionCollector(messagesent, filter, { max: 1, time: 5000, errors: ['time'] })
+    collector.on("collect", async (react) => {
+        client.database.addItem(message.author.id, "cod", 1, `inventories.${message.author.id}.cod`)
         let embed = new Discord.MessageEmbed()
+            .setDescription("You got 1 cod!")
             .setColor("#00FF80")
-            .setDescription("You " + randomthing(actions) + moreems + " emeralds <:emerald:834856709011931147>.")
-        await message.channel.send(embed)
-        const data = await Emeralds.findOne({
-            userID: message.author.id
-        });
-        if (!data) {
-            message.channel.send('Hold on, creating records for you since it\'s your first time using this bot')
-            let newData = new Emeralds({
-                _id: mongoose.Types.ObjectId(),
-                userID: message.author.id,
-                emeralds: moreems,
-                lastclaim: 0,
-                vault: 0,
-                capacity: 180,
-                pickaxe: "wood"
-            })
-            newData.save();
+
+        let messagesent = await message.channel.send(embed)
+    })
+
+    collector.on("end", async () => {
+        if (!collector.collected.first()) {
+            return message.channel.send("The fish is gone kiddo, react faster next time 😂")
         }
-        else {
-            var myquery = { userID: message.author.id };
-            let newEmeralds = data.emeralds + moreems
-            var newvalues = { $set: { emeralds: newEmeralds } };
-            Emeralds.updateOne(myquery, newvalues, function(err, res) {
-                if (err) throw err;
-            });
-        }
-    }
-    else {
-        let embed = new Discord.MessageEmbed()
-            .setColor("#00FF80")
-            .setDescription("You " + randomthing(actions) + randint(1, 6).toString() + " " + randomthing(actionas) + randomthing(gunk) + ".")
-        await message.channel.send(embed)
-    }
+    })
+
 };
 
 exports.conf = {
-    enabled: true,
+    enabled: false,
     guildOnly: false,
     aliases: [],
-    cooldown: 2,
-    permLevel: 0
+    cooldown: 15,
+    permLevel: 5
 };
 
 exports.help = {
-    name: "mine",
+    name: "fish",
     description:
-        "Go mining for a chance of emeralds! WIP",
-    usage: "mine",
+        "Go fishing and get fish!",
+    usage: "fish",
 };
