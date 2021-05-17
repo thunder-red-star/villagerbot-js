@@ -19,8 +19,9 @@ exports.run = async (client, message, args, tools) => {
         if (uuid2.data.error == "Not Found") {
             return message.channel.send(user2 + " is not a valid Minecraft username!")
         }
-        let avatar1 = await Canvas.loadImage("https://crafatar.com/avatars/" + uuid1.data.id);
-        let avatar2 = await Canvas.loadImage("https://crafatar.com/avatars/" + uuid2.data.id);
+        let avatar1 = await Canvas.loadImage("https://crafatar.com/renders/head/" + uuid1.data.id);
+        let avatar2 = await Canvas.loadImage("https://crafatar.com/renders/head/" + uuid2.data.id);
+        let heart = await Canvas.loadImage("https://cdn.discordapp.com/emojis/836685182516985927.png?v=1");
         const workspace = Canvas.createCanvas(1000, 525);
         const ctx = workspace.getContext('2d');
         ctx.font = '60px Minecraft';
@@ -31,6 +32,13 @@ exports.run = async (client, message, args, tools) => {
         ctx.fillText(user2, 900, 50);
         ctx.drawImage(avatar1, 100, 100, 200, 200);
         ctx.drawImage(avatar2, 700, 100, 200, 200);
+        ctx.textAlign = "center";
+        ctx.font = '90px Minecraft';
+        ctx.drawImage(heart, 425, 125, 150, 150)
+
+        ctx.fillText("?", 503, 225);
+        ctx.font = '60px Minecraft';
+
         let percent;
         if (user1 == "GeorgeNotFound" && user2 == "Dream" || user1 == "Dream" && user2 == "GeorgeNotFound") {
             percent = 100
@@ -42,7 +50,7 @@ exports.run = async (client, message, args, tools) => {
         ctx.strokeStyle = "#FFFFFF"
         ctx.fillRect(100, 350, 800, 50);
         ctx.fillStyle = "#FF69B4"
-        ctx.fillRect(105, 355, 105 + (795 - 110) * percent / 100, 40)
+        ctx.fillRect(105, 355, (895 - 110) * percent / 100, 40)
         ctx.textAlign = "center";
         ctx.fillStyle = "#FFFFFF"
 
@@ -54,8 +62,9 @@ exports.run = async (client, message, args, tools) => {
             .setColor("#00FF80")
         message.channel.send(embed)
     }
-    catch {
+    catch (error){
         message.channel.send("One of the names you provided is not a valid Minecraft username, please try again.")
+        console.log(error)
     }
 };
 

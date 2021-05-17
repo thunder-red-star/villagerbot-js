@@ -30,6 +30,9 @@ exports.run = async (client, message, args, tools) => {
         data = await Settings.findOne({
             guildID: message.guild.id
         });
+        let preficks
+        if (!data) {preficks = "v!!"}
+        else {preficks = data.prefix}
     if (!args[0]) {
         let categoryEmbed = new Discord.MessageEmbed()
             .setTitle("Help for Villager Bot JS")
@@ -38,12 +41,12 @@ exports.run = async (client, message, args, tools) => {
                 "Welcome to Villager Bot JS!"
             )
             .setThumbnail("https://cdn.discordapp.com/avatars/812915477625438208/2ad42195c508d25ec607828c5a33f10c.png?size=1024")
-            .addField("Configuration ⚙", "[Hover for info](https://thunderredstar.me/villager-bot-js-info/ \"Configure the bot to your liking!\")\n\`" + data.prefix + "help config\`", true)
-            .addField("Economy 💵", "[Hover for info](https://thunderredstar.me/villager-bot-js-info/ \"Interact with the bot, gain emeralds, and be the richest villager!\")\n\`" + data.prefix + "help economy\`", true)
-            .addField("Fun 🤣", "[Hover for info](https://thunderredstar.me/villager-bot-js-info/ \"Use the bot to do fun and interesting stuff!\")\n\`" + data.prefix + "help fun\`", true)
-            .addField("Info ℹ", "[Hover for info](https://thunderredstar.me/villager-bot-js-info/ \"Get information about the bot, its creator, and help.\")\n\`" + data.prefix + "help info\`", true)
-            .addField("Minecraft ⛏", "[Hover for info](https://thunderredstar.me/villager-bot-js-info/ \"Use many useful Minecraft related commands such as name history and server ping.\")\n\`" + data.prefix + "help mc\`", true)
-            .addField("Moderation 🔨", "[Hover for info](https://thunderredstar.me/villager-bot-js-info/ \"Moderate your server with a wide range of useful moderation commands!\")\n\`" + data.prefix + "help mc\`", true)
+            .addField("Configuration ⚙", "[Hover for info](https://thunderredstar.me/villager-bot-js-info/ \"Configure the bot to your liking!\")\n\`" + preficks + "help config\`", true)
+            .addField("Economy 💵", "[Hover for info](https://thunderredstar.me/villager-bot-js-info/ \"Interact with the bot, gain emeralds, and be the richest villager!\")\n\`" + preficks + "help economy\`", true)
+            .addField("Fun 🤣", "[Hover for info](https://thunderredstar.me/villager-bot-js-info/ \"Use the bot to do fun and interesting stuff!\")\n\`" + preficks + "help fun\`", true)
+            .addField("Info ℹ", "[Hover for info](https://thunderredstar.me/villager-bot-js-info/ \"Get information about the bot, its creator, and help.\")\n\`" + preficks + "help info\`", true)
+            .addField("Minecraft ⛏", "[Hover for info](https://thunderredstar.me/villager-bot-js-info/ \"Use many useful Minecraft related commands such as name history and server ping.\")\n\`" + preficks + "help mc\`", true)
+            .addField("Moderation 🔨", "[Hover for info](https://thunderredstar.me/villager-bot-js-info/ \"Moderate your server with a wide range of useful moderation commands!\")\n\`" + preficks + "help mc\`", true)
             .setTimestamp()
             .setFooter("Made by ThunderRedStar#9374")
         message.channel.send(categoryEmbed);
@@ -70,7 +73,7 @@ exports.run = async (client, message, args, tools) => {
                         .setTitle(`Villager Bot JS commands [${args[0]}]`)
                         .setColor("#00FF80")
 
-                        .setDescription(commandslist + "\n\nUse `" + data.prefix + "help <command>` to see help for an individual command!")
+                        .setDescription(commandslist + "\n\nUse `" + preficks + "help <command>` to see help for an individual command!")
                         .setTimestamp()
                         .setFooter("Made by ThunderRedStar#9374")
 
