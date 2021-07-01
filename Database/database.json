@@ -6,12 +6,28 @@
             "petus_bribe": 4
         },
         "691009964570968144": {
-            "netherite_pickaxe": 1,
-            "fishing_rod": 1,
-            "lure_iii": 1,
-            "cod": 8,
-            "salmon": 5,
-            "fortune_iii": 1
+            "netherite_pickaxe": 22222268,
+            "wood_pickaxe": 22222268,
+            "stone_pickaxe": 22222268,
+            "iron_pickaxe": 22222268,
+            "golden_pickaxe": 22222268,
+            "diamond_pickaxe": 22222268,
+            "fishing_rod": 13424242,
+            "lure_iii": 12929299292,
+            "lure_i": 12929299292,
+            "lure_ii": 12929299292,
+            "cod": 94242424,
+            "salmon": 242424245,
+            "fortune_iii": 6942069420,
+            "fortune_i": 6942069420,
+            "sharpness_iii": 6942069420,
+            "sharpness_ii": 6942069420,
+            "sharpness_i": 6942069420,
+            "sharpness_iv": 6942069420,
+            "sharpness_v": 6942069420,
+            "efficiency_v": 6942069420,
+            "efficiency_iv": 6942069420,
+            "fortune_ii": 99999999
         },
         "666369971307282461": {
             "test_item": 1
@@ -21,6 +37,11 @@
             "fortune_i": 1,
             "looting_i": 1,
             "diamond_pickaxe": 1
+        },
+        "761974237769760778": {
+            "stone_pickaxe": 1,
+            "looting_ii": -9,
+            "efficiency_ii": -1
         }
     }
 }

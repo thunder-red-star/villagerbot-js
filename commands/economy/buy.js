@@ -28,6 +28,8 @@ exports.run = async (client, message, args, tools) => {
     if (!iteminfo.hasOwnProperty(item)) {
         return message.channel.send("That item can't be bought!")
     }
+    if (quantity < 1) {return message.channel.send("NO.")}
+    quantity = parseInt(quantity)
     if (item.includes("pickaxe")) {
         if (item == "stone_pickaxe") {
             var myquery = { userID: message.author.id };

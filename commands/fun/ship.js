@@ -7,6 +7,84 @@ function randint(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function twoname(name_input_1, name_input_2) {
+    let name_1;
+    let name_2;
+
+    function length(item) {
+        return item.length
+    }
+
+    if (length(name_input_1) > length(name_input_2)) {
+        name_1 = name_input_2;
+        name_2 = name_input_1;
+    }
+    if (length(name_input_1) < length(name_input_2)) {
+        name_1 = name_input_1;
+        name_2 = name_input_2;
+    }
+    else {
+        name_1 = name_input_1;
+        name_2 = name_input_2;
+    }
+
+    let array1 = name_1.split(/(?=[A-Z])/);
+    let array2 = name_2.split(/(?=[A-Z])/);
+
+    let array_1;
+    let array_2;
+
+    if (length(array1) > length(array2)) {
+        array_1 = array2;
+        array_2 = array1;
+    }
+    if (length(array1) < length(array2)) {
+        array_1 = array1;
+        array_2 = array2;
+    }
+    else {
+        array_1 = array1;
+        array_2 = array2;
+    }
+
+    let middle_index_1;
+    let middle_index_2;
+
+    if (length(array2) > 1) {
+        let middle_index_1 = Math.floor(length(array1) / 2)
+        if (middle_index_1 == 0) {
+            middle_index_1 = 1
+        }
+        let middle_index_2 = Math.floor(length(array2) / 2)
+        return array1.slice(0, middle_index_1).join("") + array2.slice(middle_index_2).join("")
+    }
+    else {
+        let middle_index_1 = Math.floor(length(name_1) / 2)
+        let middle_index_2 = Math.floor(length(name_2) / 2)
+        return name_1.split("").slice(0, middle_index_1).join("") + name_2.split("").slice(middle_index_2).join("")
+    }
+}
+
+function quality(percent) {
+    if (percent <= 15) {
+        return "a horrible "
+    }
+    if (percent <= 30) {
+        return "a bad "
+    }
+    if (percent <= 50) {
+        return "a not so great  "
+    }
+    if (percent <= 65) {
+        return "an ok "
+    }
+    if (percent <= 85) {
+        return "a good "
+    }
+    if (percent <= 100) {
+        return "a GREAT "
+    }
+}
 exports.run = async (client, message, args, tools) => {
     try {
         let user1 = message.content.split(" ").slice(1, 2).join(" ")
@@ -57,12 +135,13 @@ exports.run = async (client, message, args, tools) => {
         ctx.fillText(percent.toString() + "%", 500, 450);
         const attachment = new Discord.MessageAttachment(workspace.toBuffer(), 'ship-output.png');
         const embed = new Discord.MessageEmbed()
+            .setDescription(twoname(user1, user2) + " would be " + quality(percent) + "couple!")
             .attachFiles(attachment)
             .setImage('attachment://ship-output.png')
             .setColor("#00FF80")
         message.channel.send(embed)
     }
-    catch (error){
+    catch (error) {
         message.channel.send("One of the names you provided is not a valid Minecraft username, please try again.")
         console.log(error)
     }
